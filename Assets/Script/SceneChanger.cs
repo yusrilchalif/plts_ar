@@ -5,25 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    //public static SceneChanger instance;
+    public static SceneChanger instance;
 
-    //private void Awake()
-    //{
-    //    if (instance == null)
-    //    {
-    //        instance = this;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Another SceneChanger instance found. Destroying this one.");
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //}
-
-    public void ChangeScene(string name)
+    private void Awake()
     {
-        SceneManager.LoadScene(name);
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    public void GoToARScene()
+    {
+        SceneManager.LoadSceneAsync(1);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void QuitApps()

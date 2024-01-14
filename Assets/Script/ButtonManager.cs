@@ -5,21 +5,22 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    public SceneChanger sceneChanger;
+    [SerializeField] Button startButton, exitButton;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        startButton.onClick.AddListener(GoTosceneAR);
+        exitButton.onClick.AddListener(QuitButton);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoTosceneAR()
     {
-        
+        SceneChanger.instance.GoToARScene();
     }
 
-    public void BackToMenu(string menu)
+    public void QuitButton()
     {
-        sceneChanger.ChangeScene(menu);
+        SceneChanger.instance.QuitApps();
     }
 }
